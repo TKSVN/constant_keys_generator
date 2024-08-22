@@ -1,0 +1,16 @@
+name: localization_keys_const_generator
+description: A genarator for create locale keys file for json translations file
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: '>=3.4.4 <4.0.0'
+
+# Add regular dependencies here.
+dependencies:
+  # path: ^1.8.0
+
+dev_dependencies:
+  lints: ^3.0.0
+  test: ^1.24.0
+  build:
