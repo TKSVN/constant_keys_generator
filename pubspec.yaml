@@ -1,7 +1,7 @@
-name: localization_keys_const_generator
-description: A genarator for create locale keys file for json translations file
+name: constant_keys_generator
+description: A genarator for create constant keys file from json file
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/TKSVN/constant_keys_generator
 
 environment:
   sdk: '>=3.4.4 <4.0.0'
