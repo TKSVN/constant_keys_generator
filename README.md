@@ -84,7 +84,7 @@ To run the code generator, execute the following command:
 dart run build_runner build
 ```
 
-### 3. Verify the generated files
+### 4. Verify the generated files
 
 **example/lib/generated/constant_keys/locale_keys.g.dart**
 
