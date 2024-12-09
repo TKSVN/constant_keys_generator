@@ -110,7 +110,7 @@ class ConstantKeysGenerator implements Builder {
       };
 
   String _createOutputFilePath(String outputFileName, { bool containsLib = true}) {
-    return '${containsLib ? 'lib/' : ''}${_builderConfig?.outputDir}/$outputFileName.dart';
+    return '${containsLib ? 'lib/' : ''}${_builderConfig?.outputDir}/$outputFileName.g.dart';
   }
 
   factory ConstantKeysGenerator.fromConfig() {
@@ -120,37 +120,14 @@ class ConstantKeysGenerator implements Builder {
   }
 
   static BuilderConfig? _loadConfigs() {
-    return _loadConfigsFromFile() ?? _loadConfigsFromPubspec();
+    return _loadConfigsFromFile('constant_keys_generator.yaml') ?? _loadConfigsFromFile('pubspec.yaml');
   }
 
-  static BuilderConfig? _loadConfigsFromFile() {
-    // Using 'constant_keys_generator.yaml' config file
-    const customConfigFileName = 'constant_keys_generator.yaml';
-    final customConfigFile = File(customConfigFileName);
-
-    if (!customConfigFile.existsSync()) {
-      log.warning(
-          '$customConfigFileName not found. Using default configuration.');
-      return null;
-    }
-
-    // Read and parse the custom config file
-    final configContent = customConfigFile.readAsStringSync();
-    final configYaml = loadYaml(configContent) as Map<String, dynamic>;
-
-    // Parse file configurations
-    return BuilderConfig(
-      fileConfigs: (configYaml['file_configs'] as List?)
-        ?.map(
-            (config) => FileConfig.fromJson(Map<String, dynamic>.from(config)))
-        .toList() ?? []);
-  }
-
-  static BuilderConfig? _loadConfigsFromPubspec() {
+  static BuilderConfig? _loadConfigsFromFile(String fileName) {
     // Read pubspec.yaml
-    final pubspecFile = File('pubspec.yaml');
+    final pubspecFile = File(fileName);
     if (!pubspecFile.existsSync()) {
-      log.warning('pubspec.yaml not found.');
+      log.warning('$fileName not found.');
       return null;
     }
 
@@ -161,7 +138,7 @@ class ConstantKeysGenerator implements Builder {
     final customConfig = pubspec['constant_keys_generator'] as Map?;
     if (customConfig == null) {
       log.warning(
-          'No configuration found for "constant_keys_generator" in pubspec.yaml.');
+          'No configuration found for "constant_keys_generator" in $fileName.');
       return null;
     }
 
