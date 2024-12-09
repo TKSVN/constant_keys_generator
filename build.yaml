@@ -1,0 +1,13 @@
+targets:
+  $default:
+    builders:
+      constant_keys_generator:
+        enabled: true
+
+builders:
+  constant_keys_generator:
+    import: "package:constant_keys_generator/builder.dart"
+    builder_factories: ["localeKeysGeneratorBuilder"]
+    build_extensions: {}
+    auto_apply: root_package
+    build_to: source
