@@ -106,7 +106,7 @@ final LocaleKeys = _LocaleKeys();
 
 ## Generated files' usecase
 
-When we developed an application using the easy_localization library, although this library provides a code generation mechanism, the results, whether in keys or json format, were not easy to use.
+When we developed an application using the [easy_localization](https://pub.dev/packages/easy_localization) library, although this library provides a code generation mechanism, the results, whether in keys or json format, were not easy to use.
 
 In `keys` format
 
