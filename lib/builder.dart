@@ -23,7 +23,7 @@ class ConstantKeysGenerator implements Builder {
       return;
     }
 
-    for (var fileConfig in _builderConfig.fileConfigs) {
+    for (var fileConfig in _builderConfig!.fileConfigs) {
       await _generenateFile(buildStep, fileConfig);
     }
   }
